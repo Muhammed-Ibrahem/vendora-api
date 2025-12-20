@@ -8,7 +8,7 @@ services:
   vendora_api:
     command: pnpm start
     env_file:
-      - env.production
+      - .env.production
 
 volumes:
   production_data_database:
