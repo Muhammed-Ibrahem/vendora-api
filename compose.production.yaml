@@ -1,0 +1,14 @@
+services:
+  database:
+    env_file:
+      - .env.production.db
+    volumes:
+      - production_data_database:/var/lib/mysql
+
+  vendora_api:
+    command: pnpm start
+    env_file:
+      - env.production
+
+volumes:
+  production_data_database:

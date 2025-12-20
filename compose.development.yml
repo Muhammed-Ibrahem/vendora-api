@@ -1,0 +1,18 @@
+services:
+  database:
+    env_file:
+      - .env.db
+    ports:
+      - "3309:3306"
+    volumes:
+      - development_data_database:/var/lib/mysql
+
+  vendora_api:
+    command: pnpm dev
+    volumes:
+      - .:/app
+    env_file:
+      - .env
+
+volumes:
+  development_data_database:
