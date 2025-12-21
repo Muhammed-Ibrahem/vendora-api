@@ -14,5 +14,9 @@ services:
     env_file:
       - .env
 
+  nginx:
+    env_file:
+      - .env
+
 volumes:
   development_data_database:

@@ -10,5 +10,8 @@ services:
     env_file:
       - .env.production
 
+  nginx:
+    env_file:
+      - .env.production
 volumes:
   production_data_database:

@@ -5,6 +5,8 @@ const envSchema = z.object({
     .enum(["development", "test", "production"])
     .default("development"),
   PORT: z.coerce.number().optional().default(3000),
+  HOST: z.string(),
+  NGINX_PORT: z.coerce.number().optional().default(80),
   DB_HOST: z.string(),
   DB_USER: z.string(),
   DB_PASSWORD: z.string(),
@@ -25,6 +27,8 @@ if (!_env.success) {
 
 export const env = {
   port: _env.data.PORT,
+  host: _env.data.HOST,
+  nginxPort: _env.data.NGINX_PORT,
   dbHost: _env.data.DB_HOST,
   dbUser: _env.data.DB_USER,
   dbPassword: _env.data.DB_PASSWORD,

@@ -7,8 +7,11 @@ const startServer = async () => {
 
     app.listen(env.port, () => {
       console.log(`Server running on port ${env.port}`);
+      console.log(`Reverse Proxy is running on port ${env.nginxPort}`);
       console.log(`Environment: ${env.nodeEnv}`);
-      console.log(`Health check: http://localhost:${env.port}/api/v1/health`);
+      console.log(
+        `Health check: http://${env.host}:${env.nginxPort}/api/v1/health`
+      );
     });
   } catch (err) {
     console.error("Failed to start server:", err);
