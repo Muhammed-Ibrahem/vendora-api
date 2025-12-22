@@ -5,6 +5,10 @@ services:
     volumes:
       - production_data_database:/var/lib/mysql
 
+  migration:
+    command: node dist/infrastructure/database/scripts/migrate.js
+    env_file:
+      - .env.production
   vendora_api:
     command: pnpm start
     env_file:

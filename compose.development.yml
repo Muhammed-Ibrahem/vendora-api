@@ -7,6 +7,13 @@ services:
     volumes:
       - development_data_database:/var/lib/mysql
 
+  migration:
+    command: pnpm ts-node -r tsconfig-paths/register src/infrastructure/database/mysql/scripts/migrate.ts
+    env_file:
+      - .env
+    volumes:
+      - .:/app
+
   vendora_api:
     command: pnpm dev
     volumes:

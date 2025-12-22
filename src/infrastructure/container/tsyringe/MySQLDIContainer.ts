@@ -18,6 +18,8 @@ export const registerMySQLDatabase = (container: DependencyContainer): void => {
     queueLimit: 0,
     enableKeepAlive: true,
     keepAliveInitialDelay: 0,
+    namedPlaceholders: true,
+    multipleStatements: true,
   };
 
   const connectionInstance = new MySQLConnection(poolConfig);
