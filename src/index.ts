@@ -1,4 +1,4 @@
-import { createApp } from "~/infra/express/app";
+import { createApp } from "~/express/app";
 import { env } from "~/config/env";
 
 const startServer = async () => {

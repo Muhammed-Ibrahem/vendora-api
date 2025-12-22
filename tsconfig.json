@@ -9,10 +9,12 @@
     "outDir": "dist",
     "removeComments": true,
     "paths": {
-      "~/*": ["./src"],
+      // infrastructure mapping
       "~/infra/*": ["./src/infrastructure/*"],
       "~/config/*": ["./src/infrastructure/config/*"],
-      "~/express/*": ["./src/infrastructure/express/*"]
+      "~/express/*": ["./src/infrastructure/express/*"],
+      "~/container/*": ["./src/infrastructure/container/*"],
+      "~/database/*": ["./src/infrastructure/database/*"]
     },
 
     // Environment Settings

@@ -2,14 +2,17 @@ import "reflect-metadata";
 //
 import express, { Express } from "express";
 import cookieParser from "cookie-parser";
+import { container } from "tsyringe";
 import path from "node:path";
 import helmet from "helmet";
 import cors from "cors";
 
 import { notFoundMiddleware } from "~/express/middlewares/not-found.middleware";
 import { errorMiddleware } from "~/express/middlewares/error.middleware";
-import { DIContainer } from "~/infra/container/tsyringe";
 import { V1RoutesRegistry } from "~/express/routes/v1";
+import { setupContainer } from "~/container/tsyringe";
+
+setupContainer();
 
 export const createApp = async (): Promise<Express> => {
   const app: Express = express();
@@ -35,7 +38,7 @@ export const createApp = async (): Promise<Express> => {
     });
   });
 
-  const v1Registry = DIContainer.resolve(V1RoutesRegistry);
+  const v1Registry = container.resolve(V1RoutesRegistry);
 
   await v1Registry.autoLoadRoutesAsync();
 
