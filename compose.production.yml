@@ -6,7 +6,7 @@ services:
       - production_data_database:/var/lib/mysql
 
   migration:
-    command: node dist/infrastructure/database/scripts/migrate.js
+    command: node dist/infrastructure/database/mysql/scripts/migrate.js
     env_file:
       - .env.production
   vendora_api:
@@ -17,5 +17,7 @@ services:
   nginx:
     env_file:
       - .env.production
+    volumes:
+      - ./docker/nginx/default.conf:/etc/nginx/conf.d/default.conf:ro
 volumes:
   production_data_database:
