@@ -1,0 +1,31 @@
+services:
+  database:
+    env_file:
+      - .env.db
+    ports:
+      - "3309:3306"
+    volumes:
+      - development_data_database:/var/lib/mysql
+
+  migration:
+    command: pnpm ts-node -r tsconfig-paths/register src/Infrastructure/Database/Scripts/Migrate.ts
+    env_file:
+      - .env
+    volumes:
+      - .:/app
+
+  vendora_api:
+    command: pnpm dev
+    volumes:
+      - .:/app
+    env_file:
+      - .env
+
+  nginx:
+    env_file:
+      - .env
+    volumes:
+      - ./docker/nginx/nginx.dev.conf:/etc/nginx/conf.d/default.conf:ro
+      - ~/certs:/etc/nginx/certs:ro
+volumes:
+  development_data_database:

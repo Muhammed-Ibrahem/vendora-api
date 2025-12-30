@@ -1,0 +1,23 @@
+services:
+  database:
+    env_file:
+      - .env.production.db
+    volumes:
+      - production_data_database:/var/lib/mysql
+
+  migration:
+    command: node dist/Infrastructure/Database/Scripts/Migrate.js
+    env_file:
+      - .env.production
+  vendora_api:
+    command: pnpm start
+    env_file:
+      - .env.production
+
+  nginx:
+    env_file:
+      - .env.production
+    volumes:
+      - ./docker/nginx/default.conf:/etc/nginx/conf.d/default.conf:ro
+volumes:
+  production_data_database:
