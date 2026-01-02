@@ -6,6 +6,9 @@
     "outDir": "dist",
     "removeComments": true,
     "paths": {
+      // Global mapping
+      "~/*": ["./src/*"],
+
       // infrastructure mapping
       "~/Config/*": ["./src/Infrastructure/Config/*"],
       "~/Express/*": ["./src/Infrastructure/Express/*"],
@@ -57,9 +60,9 @@
   "include": ["src"],
   "exclude": [
     "node_modules",
-    "dist",
-    "**/*.test.ts",
-    "**/*.spec.ts"
+    "dist"
+    // "**/*.test.ts",
+    // "**/*.spec.ts"
     // "eslint.config.mts"
   ]
 }
