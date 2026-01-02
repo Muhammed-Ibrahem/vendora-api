@@ -2,7 +2,9 @@ name: Commitlint
 
 on:
   pull_request:
-    branches: [main]
+    branches:
+      - main
+      - dev
 
 jobs:
   commitlint:
@@ -10,12 +12,12 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6.0.1
         with:
           fetch-depth: 0
 
       - name: Setup Node.js
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v6.1.0
         with:
           node-version: 24
 
@@ -30,6 +32,6 @@ jobs:
       - name: Lint commit message
         run: |
           pnpm commitlint \
-            --from origin/main \
+            --from origin/${{ github.base_ref }} \
             --to HEAD \
             --verbose
