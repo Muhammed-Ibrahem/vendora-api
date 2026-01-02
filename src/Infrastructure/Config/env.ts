@@ -12,6 +12,8 @@ const envSchema = z.object({
   DB_PASSWORD: z.string(),
   DB_NAME: z.string(),
   DB_PORT: z.coerce.number(),
+  ACCESS_TOKEN_SECRET: z.string(),
+  REFRESH_TOKEN_SECRET: z.string(),
 });
 
 const _env = envSchema.safeParse(process.env);
@@ -35,4 +37,6 @@ export const env = {
   dbName: _env.data.DB_NAME,
   dbPort: _env.data.DB_PORT,
   nodeEnv: _env.data.NODE_ENV,
+  accessTokenSecret: _env.data.ACCESS_TOKEN_SECRET,
+  refreshTokenSecret: _env.data.REFRESH_TOKEN_SECRET,
 };
