@@ -12,7 +12,12 @@
     "dev": "pnpm nodemon -r tsconfig-paths/register src/main.ts",
     "start": "node dist/main.js",
     "test": "pnpm jest --passWithNoTests",
-    "prepare": "husky"
+    "prepare": "husky",
+    "docker:dev": "docker compose -f compose.yml -f compose.development.yml",
+    "docker:prod": "docker compose -f compose.yml -f compose.production.yml",
+    "docker:down": "docker compose down -v",
+    "migrate:dev": "pnpm ts-node -r tsconfig-paths/register src/Infrastructure/Database/Scripts/Migrate.ts",
+    "migrate:prod": "node dist/Infrastructure/Database/Scripts/Migrate.js"
   },
   "dependencies": {
     "bcrypt": "^6.0.0",
