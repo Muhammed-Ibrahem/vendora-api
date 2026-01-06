@@ -8,14 +8,16 @@ services:
       - development_data_database:/var/lib/mysql
 
   migration:
-    command: pnpm ts-node -r tsconfig-paths/register src/Infrastructure/Database/Scripts/Migrate.ts
+    build:
+      target: migration-dev
     env_file:
       - .env
     volumes:
       - .:/app
 
   vendora_api:
-    command: pnpm dev
+    build:
+      target: development
     volumes:
       - .:/app
     env_file:

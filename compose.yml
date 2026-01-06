@@ -17,9 +17,6 @@ services:
     networks:
       - private_network
     container_name: migration
-    depends_on:
-      database:
-        condition: service_healthy
 
   vendora_api:
     build:

@@ -6,11 +6,13 @@ services:
       - production_data_database:/var/lib/mysql
 
   migration:
-    command: node dist/Infrastructure/Database/Scripts/Migrate.js
+    build:
+      target: migration-prod
     env_file:
       - .env.production
   vendora_api:
-    command: pnpm start
+    build:
+      target: production
     env_file:
       - .env.production
 
